@@ -1,0 +1,345 @@
+:root {
+  --blue-500: #3182f6;
+  --blue-700: #1b64da;
+  --grey-50: #f8fafc;
+  --grey-100: #f2f4f6;
+  --grey-300: #d1d6db;
+  --grey-600: #6b7684;
+  --grey-900: #191f28;
+  --node-text: #3f6175;
+  --danger: #f04452;
+  --success: #00a86b;
+  --surface: #ffffff;
+  --line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, #eef5ff 0%, var(--grey-50) 40%, #f7fafc 100%);
+  font-family:
+    "Toss Product Sans",
+    "Tossface",
+    "SF Pro KR",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Apple SD Gothic Neo",
+    Roboto,
+    "Noto Sans KR",
+    sans-serif;
+  color: var(--grey-900);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+#app {
+  width: 100%;
+  height: 100dvh;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+}
+
+.intro {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.intro-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 24px rgba(25, 31, 40, 0.08);
+}
+
+.intro-title {
+  margin: 0;
+  font-size: 26px;
+  line-height: var(--line-height);
+}
+
+.intro-desc {
+  margin: 8px 0 0;
+  color: var(--grey-600);
+  font-size: 15px;
+  line-height: var(--line-height);
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-height: 44px;
+  font-size: 15px;
+  line-height: var(--line-height);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.12s ease, background-color 0.12s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--blue-500);
+  color: #fff;
+}
+
+.btn-primary:active {
+  background: var(--blue-700);
+}
+
+.btn-weak {
+  background: #e8f3ff;
+  color: var(--blue-700);
+}
+
+.btn-danger {
+  background: #ffebee;
+  color: #b3261e;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  gap: 8px;
+  padding: 8px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.status {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--grey-600);
+  line-height: var(--line-height);
+}
+
+.canvas-wrap {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e6ebf0;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 220px;
+}
+
+svg#edgeLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.node-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.node {
+  position: absolute;
+  width: 96px;
+  min-height: 54px;
+  border-radius: 12px;
+  padding: 8px 8px 8px 12px;
+  background: #fff;
+  border: 1px solid #dce4eb;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+  color: var(--node-text);
+  transform: translate(-50%, -50%);
+}
+
+.node::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 12px 0 0 12px;
+  background: var(--blue-500);
+}
+
+.node[data-type="salary_account"]::before {
+  background: #16a34a;
+}
+
+.node[data-type="payment_instrument"]::before {
+  background: #f59e0b;
+}
+
+.node[data-type="expense_category"]::before {
+  background: #ef4444;
+}
+
+.node-name {
+  display: block;
+  font-size: 13px;
+  line-height: var(--line-height);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: #6d8797;
+  line-height: var(--line-height);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node.selected {
+  border: 2px solid var(--blue-500);
+}
+
+.node.connect-source {
+  border: 2px solid #16a34a;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e7edf2;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.panel-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 13px;
+  line-height: var(--line-height);
+  color: var(--grey-600);
+}
+
+.field input,
+.field select,
+.field textarea {
+  border: 1px solid var(--grey-300);
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: var(--line-height);
+  padding: 8px;
+  min-height: 40px;
+  background: #fff;
+}
+
+.field textarea {
+  resize: none;
+  height: 40px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.helper {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--grey-600);
+  line-height: var(--line-height);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(25, 31, 40, 0.94);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: var(--line-height);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  max-width: calc(100vw - 24px);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.edge {
+  stroke: #3f6175;
+  stroke-width: 2;
+  fill: none;
+  cursor: pointer;
+}
+
+.edge.selected {
+  stroke: var(--blue-500);
+  stroke-width: 3;
+}
+
+@media (max-height: 760px) {
+  .main {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .btn {
+    min-height: 40px;
+    padding: 8px 12px;
+  }
+
+  .panel {
+    padding: 8px;
+  }
+
+  .node {
+    width: 88px;
+    min-height: 50px;
+    padding: 6px 6px 6px 10px;
+  }
+}

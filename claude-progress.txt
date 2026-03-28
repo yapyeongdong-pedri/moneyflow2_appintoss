@@ -1,0 +1,39 @@
+# Money Flow 개발 진행 기록
+
+## 프로젝트 정보
+- 앱 이름: Money Flow
+- 앱 유형: 앱인토스 비게임 모바일 웹앱
+- 생성일: 2026-03-28
+
+## Session 기록
+
+### Session 1 - 2026-03-28
+- 기능명세서(v1.0-core) 기준 핵심 기능 구현 완료
+- harness-init 필수 초기 세팅 반영
+  - granite.config.ts 생성 (navigationBar + brand)
+  - index.html viewport/user-scalable=no, title/og:title 반영
+  - feature_list.json 생성
+- 인트로 화면 -> 메인 전환 구현
+- 노드 CRUD 및 제약 검증 구현
+  - 월급통장 삭제 불가
+  - 계좌 7, 카드 5, 지출 14 제한
+  - 노드명 30자, 메모 40자 제한
+- 연결 규칙 및 상호작용 구현
+  - 클릭-클릭 연결 생성
+  - 허용되지 않은 연결 차단
+  - 선 선택 후 해제
+- 자동 레이아웃 구현
+  - 월급통장 고정
+  - 계좌 subtype 순 정렬
+  - 지출 1줄/2줄 규칙
+- 저장/복원 구현
+  - localStorage 자동 저장 및 복원
+- 공유 폴백 구현
+  - Toss -> Web Share -> Clipboard
+- 파괴적 액션 확인 팝업 구현
+  - 노드 삭제, 선 해제, 전체 초기화
+  - 기본 포커스 취소 버튼
+
+## 다음 작업 제안
+- 실제 AppsInToss 런타임에서 Toss 공유 API 명세와 시그니처 최종 검증
+- QA 시나리오별 E2E 체크리스트 문서화

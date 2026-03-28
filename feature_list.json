@@ -1,0 +1,97 @@
+﻿{
+  "project": "Money Flow",
+  "created": "2026-03-28",
+  "features": [
+    {
+      "id": "F001",
+      "category": "infrastructure",
+      "description": "AppsInToss rejection-proof initialization",
+      "steps": [
+        "Create granite.config.ts with brand and navigation",
+        "Set viewport/title/og in index.html",
+        "Add intro as first entry screen",
+        "Create feature_list.json and claude-progress.txt"
+      ],
+      "passes": true
+    },
+    {
+      "id": "F002",
+      "category": "logic",
+      "description": "Intro to main transition and mobile no-scroll layout",
+      "steps": [
+        "Use 100dvh mobile-first layout",
+        "Move from intro to main by start action"
+      ],
+      "passes": true
+    },
+    {
+      "id": "F003",
+      "category": "logic",
+      "description": "Node CRUD and input constraints",
+      "steps": [
+        "Keep salary account fixed",
+        "Add account, card, expense nodes",
+        "Update and delete nodes (except salary account)",
+        "Enforce name <= 30 and memo <= 40",
+        "Enforce account 7, card 5, expense 14 limits"
+      ],
+      "passes": true
+    },
+    {
+      "id": "F004",
+      "category": "logic",
+      "description": "Connection validation with allowed graph rules",
+      "steps": [
+        "Create edges with click-click interaction",
+        "Block disallowed pairs immediately",
+        "Block duplicate and self-connections",
+        "Select edge and disconnect"
+      ],
+      "passes": true
+    },
+    {
+      "id": "F005",
+      "category": "ui",
+      "description": "Automatic layout rules",
+      "steps": [
+        "Pin salary node position",
+        "Sort account nodes by subtype order",
+        "Place expenses in 1 row for <=7, 2 rows for 8-14"
+      ],
+      "passes": true
+    },
+    {
+      "id": "F006",
+      "category": "infrastructure",
+      "description": "Persistence and restore",
+      "steps": [
+        "Auto-save to localStorage",
+        "Restore state on revisit"
+      ],
+      "passes": true
+    },
+    {
+      "id": "F007",
+      "category": "share",
+      "description": "Share fallback path",
+      "steps": [
+        "Try Toss share first",
+        "Fallback to Web Share",
+        "Fallback to Clipboard copy"
+      ],
+      "passes": true
+    },
+    {
+      "id": "F008",
+      "category": "ui",
+      "description": "Destructive action confirmations",
+      "steps": [
+        "Confirm node deletion",
+        "Confirm edge disconnection",
+        "Confirm full reset",
+        "Default focus on cancel"
+      ],
+      "passes": true
+    }
+  ]
+}
